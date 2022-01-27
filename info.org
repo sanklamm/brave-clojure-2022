@@ -1,0 +1,35 @@
+* Brave Clojure 2022 : Meetup 1
+  Jan 21, 2022, 17:00 GMT 
+  Introduction & CBT Part I: Environment Setup (chapters 1 and 2) 
+
+** Introduction Checklist
+   1. Code review: what tool will we use? > Github
+   2. Code review: what system do we use for pairing reviewers with coders? > Table (linked)
+   3. Are we doing simultaneous coding with screen sharing, or are we going to divide the chapters and tasks among ourselves? > Divide parts, see table
+   4. What is our timeframe for code review and meeting preparation? (As below)
+   5. What structure for the meetings do we prefer? (60 mins, possibly more, start with chapter and solutions)
+   6. Should we record the meetings? (Yes, but DM if you are not OK with it.) 
+
+** Chapter 1 Checklist
+   1. Create a new Clojure project using Terminal 
+   2. Run the Clojure project
+   3. Build the Clojure project
+   4. Use the REPL
+
+** Chapter 2 Checklist
+   1. Pick an editor or IDE
+   2. Run the REPL in your editor or IDE
+
+** Next meeting: Feb 4, 2022, 17:00 GMT
+   - CBT Chapter 3: reading + note all new concepts
+   - CBT Chapter 3 submittables: Hobbit Model + 6 exercises (deadline for code
+     submission: Jan 28, 2022, 17:00 GMT -- reviewer-coder pairing: Jan 28-29,
+     2022 -- deadline for submitting code review: Feb 1, 2022, 17:00 GMT)
+   - CBT Appendix A: read + prep 1 plug-in from the Leiningen documentation to
+     talk about during the meeting (whatever looks useful to you)
+   - Talk about new tools (such as alternatives to Leningen, etc.)
+
+** Resources:
+   Our book (CBT): https://www.braveclojure.com/clojure-for-the-brave-and-true/ 
+   Code repo: https://github.com/asamonek/braveclojure2022 
+   Reviewer-coder draw + chapter content: https://docs.google.com/spreadsheets/d/1t7k7fp7KJolyx4DvOeviKxEGhKOA89_WnwqxT8FnFPA/edit?usp=sharing 

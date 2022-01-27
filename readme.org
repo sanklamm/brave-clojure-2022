@@ -1,0 +1,9 @@
+#+title: Clojure for the Brave and True
+#+subtitle: Bookclub
+
+* Info
+  This repo follows the book club for *Clojure for the Brave and True*.
+  Meetups started on 2022-01-21 at 17:00 GMT and will be held bi-weekly.
+
+  The =/src= folder is split up by chapter, containing some example code as well
+  as solutions to the exercises.
