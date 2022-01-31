@@ -33,3 +33,135 @@
    Our book (CBT): https://www.braveclojure.com/clojure-for-the-brave-and-true/ 
    Code repo: https://github.com/asamonek/braveclojure2022 
    Reviewer-coder draw + chapter content: https://docs.google.com/spreadsheets/d/1t7k7fp7KJolyx4DvOeviKxEGhKOA89_WnwqxT8FnFPA/edit?usp=sharing 
+
+* Brave Clojure 2022: Meetup 2
+  Feb 04, 2022, 17:00 GMT 
+  Capter 3
+
+** Syntax
+
+** Data Structures
+
+** Functions
+
+** let, loop, regular expressions
+*** let
+    - bindings inside its own lexical scope
+    - binds symbols to expressions
+    - lexical scope is limited to the =let= form
+    - last form inside is evaluated (and returned)
+    #+begin_src clojure
+      (let [x 1]
+        x)
+    #+end_src
+
+    #+RESULTS:
+    : 1
+
+    #+begin_src clojure
+      (let [a 1
+            b (inc 1)]
+        (+ a b))
+    #+end_src
+
+    #+RESULTS:
+    : 3
+    
+    #+begin_src clojure
+      (def a 5)
+      (let [a 1
+            b (inc 1)]
+        (+ a b))
+    #+end_src
+
+    #+RESULTS:
+    | #'chap03/a |
+    |          3 |
+
+*** loop
+    - almost the same as =let=
+      - bindings inside its own lexical scope
+      - binds symbols to expressions
+      - lexical scope is limited to the =loop= form
+    - acts as =recur= target
+    - needs an exit to return
+    - recursive
+    - hack so that tail-call-optimization works in Clojure
+      (which does not on the JVM)
+
+    #+begin_src clojure
+      (loop [x 10
+             squares []]
+        (if (zero? x) squares
+            (recur (dec x)
+                   (conj squares (* x x)))))
+    #+end_src
+
+    #+RESULTS:
+    | 100 | 81 | 64 | 49 | 36 | 25 | 16 | 9 | 4 | 1 |
+
+*** RegEx
+    - Clojure RegExes are Java RegExes
+    - notation: =#"RegEx"=
+    - some useful functions using RegExes:
+
+    #+begin_src clojure
+      (def str-01 "xfoox")
+      (re-find #"foo" str-01)
+      (re-matches #"foo" str-01) ; -> nil
+      (re-find #"^foo" str-01) ; -> nil
+      (re-find #"^xfoo" str-01)
+      (re-find #"^foox" str-01) ; -> nil
+    #+end_src
+
+    #+RESULTS:
+    | #'user/str-01 |
+    | "foo"         |
+    | "xfoo"        |
+
+    #+begin_src clojure
+      (def str-02 "up 3,down 40,left 3,up 1, up 2")
+      (re-seq #"\d+" str-02)
+      (clojure.string/split str-02 #",")
+    #+end_src
+
+    #+RESULTS:
+    | #'user/str-02                              |
+    | ("3" "40" "3" "1" "2")                     |
+    | ["up 3" "down 40" "left 3" "up 1" " up 2"] |
+
+    #+begin_src clojure
+      (def str-03 "3,40,3,1,2")
+      (clojure.string/split str-03 #",")
+    #+end_src
+
+    #+RESULTS:
+    | #'user/str-03          |
+    | ["3" "40" "3" "1" "2"] |
+
+    #+begin_src clojure
+      (def str-04 "2 - steps north")
+      (re-find #"(\d+) - (\w+ \w+)" str-04)
+    #+end_src
+
+    #+RESULTS:
+    | #'user/str-04                         |
+    | ["2 - steps north" "2" "steps north"] |
+
+** symmetrizer, reduce
+
+** Hobbit violence
+
+** Exercise 1
+
+** Exercise 2
+
+** Exercise 3
+
+** Exercise 4
+
+** Exercise 5
+
+** Exercise 6
+
+** Appendix A (Leiningen vs newer Tools
