@@ -135,8 +135,8 @@ unique-moves
 (defn dec-maker [x]
   #(- % x))
 
-(def dec9 (dec-maker 9))
-(dec9 10)
+(def dec-9 (dec-maker 9))
+(dec-9 10)
 ;; => 1
 
 
