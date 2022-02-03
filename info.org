@@ -164,4 +164,24 @@
 
 ** Exercise 6
 
-** Appendix A (Leiningen vs newer Tools
+** Appendix A (Leiningen vs newer Tools)
+*** Leiningen
+    - manages dependencies
+    - scaffolds projects
+    - can use different project templates
+    - create jars
+    - deploy artifacts to maven central
+    - the [[https://www.clojure-toolbox.com/][Clojure-Toolbox]] is very old but categorizes libraries -> good starting point
+    - better use [[https://clojars.org/][Clojars]] but the search is not very good
+    - has plugins
+      - linter
+      - test runner
+    - uses 2 JVMs
+*** tools.deps
+    - mainly for dependency management and building classpath
+    - more low level
+    - less clutter
+    - pick and choose what is needed (perhaps a different test runner than the standard in Leiningen)
+    - can use git shas as deps
+    - with enough work can do everything Leiningen does
+    - uses 1 JVM
