@@ -185,3 +185,84 @@
     - can use git shas as deps
     - with enough work can do everything Leiningen does
     - uses 1 JVM
+
+* Brave Clojure 2022: Meetup 3
+  Feb 18, 2022, 17:00 GMT 
+  Capter 4
+
+** [#A] Programming to Abstractions (Treating Lists, Vectors, Sets, and Maps as Sequences)
+   - we talked about that last week
+   - the great strength of Clojure is that you have a ton of functions working
+     on all basic data structures
+     #+begin_quote
+     "It is better to have 100 functions operate on one data structure than 10
+     functions on 10 data structures." —Alan Perlis
+     #+end_quote
+   - to be a =seq= you have to implement
+     - =first=
+     - =rest=
+     - =cons=
+   #+begin_src clojure
+     (seq [1 2 3])
+     (seq '(1 2 3))
+     (seq "foo")
+     (seq #{1 2 3})
+   #+end_src
+
+   #+RESULTS:
+   | (1 2 3)    |
+   | (1 2 3)    |
+   | (\f \o \o) |
+   | (1 3 2)    |
+
+   #+begin_src clojure
+     (first [1 2 3])
+     (rest [1 2 3])
+     (cons 1 [2 3])
+     (cons 1 '(2 3))
+   #+end_src
+
+   #+RESULTS:
+   | 1       |
+   | (2 3)   |
+   | (1 2 3) |
+   | (1 2 3) |
+
+   - calls =seq= on data structure and then the fn
+     #+begin_src clojure
+       (map [1 2 3]) ;; turns to
+       (map (seq [1 2 3]))
+     #+end_src
+   
+** [#A] Programming to Abstractions (first, rest, and cons)
+*** cons
+    - [[https://en.wikipedia.org/wiki/Cons][cons | wiki]]
+    - constructing memory objects which hold two values (or pointers to values)
+    - =car= being the first element
+    - =cdr= being the second element
+    - cons cell ordered pair: =(cons 1 2) -> (1 . 2)=
+    - cons cell list: =(cons 1 (cons 2 (cons 3)))=
+
+** Programming to Abstractions (Abstraction Though Indirection)
+
+** Seq Function Examples (map, reduce)
+
+** Seq Function Examples (take, drop, take-while, and drop-while)
+
+** Seq Function Examples (filter and some, sort and sort-by, concat)
+
+** Lazy Seqs (Demonstrating Lazy Seq Efficiency, Infinite Sequences)
+
+** The Collection Abstraction (into, conj)
+
+** Function Functions (apply, partial, complement)
+
+** A Vampire Data Analysis Program for the FWPD
+
+** Exercise 1
+
+** [#A] Exercise 2
+
+** Exercise 3
+
+** Exercise 4
