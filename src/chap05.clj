@@ -21,7 +21,7 @@
 
 (defn my-comp
   ([] identity)
-  ([f] (identity f))
+  ([f] f)
   ([f g]
    (fn [& args]
      (f (apply g args))))
