@@ -22,6 +22,38 @@
 ;; => clojure.lang.PersistentVector
 (class (seq [1 2 3]))
 ;; => clojure.lang.PersistentVector$ChunkedSeq
+(class '(1 2 3))
+;; => clojure.lang.PersistentList
+(class (seq '(1 2 3)))
+;; => clojure.lang.PersistentList
+
+(map (juxt identity seq? type)
+     [(range 1 4)
+      (take 3 (iterate inc 1))
+      (list 1 2 3)
+      (conj (list 2 3) 1)
+      (cons 1 (list 2 3))
+      [1 2 3]
+      (seq [1 2 3])])
+;; => ([(1 2 3) true clojure.lang.LongRange]
+;;     [(1 2 3) true clojure.lang.LazySeq]
+;;     [(1 2 3) true clojure.lang.PersistentList]
+;;     [(1 2 3) true clojure.lang.PersistentList]
+;;     [(1 2 3) true clojure.lang.Cons]
+;;     [[1 2 3] false clojure.lang.PersistentVector]
+;;     [(1 2 3) true clojure.lang.PersistentVector$ChunkedSeq])
+
+(let [s (range 1e6)]
+  (time (count s)))
+
+(let [s (apply list(range 1e6))]
+  (time (count s)))
+
+(class (range))
+;; => clojure.lang.Iterate
+(class (apply list (range))) ;; cannot be evaluated!
+
+
 
 ;; reimplement map, filter, some using reduce
 
@@ -79,6 +111,13 @@
 ;;;;;;;;;;
 
 ;; I like the threading macro for data pipelines
+
+(even? (dec (inc 1)))
+
+(-> 1
+    inc
+    dec
+    even?)
 
 (->> input
      str/split-lines

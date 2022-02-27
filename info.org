@@ -233,6 +233,49 @@
        (map [1 2 3]) ;; turns to
        (map (seq [1 2 3]))
      #+end_src
+
+   #+begin_src clojure
+     (map (juxt identity seq? type)
+       [(range 1 4)
+        (take 3 (iterate inc 1))
+        (list 1 2 3)
+        (conj (list 2 3) 1)
+        (cons 1 (list 2 3))
+        [1 2 3]
+        (seq [1 2 3])])
+   #+end_src
+
+   #+RESULTS:
+   | (1 2 3) | true  | clojure.lang.LongRange                   |
+   | (1 2 3) | true  | clojure.lang.LazySeq                     |
+   | (1 2 3) | true  | clojure.lang.PersistentList              |
+   | (1 2 3) | true  | clojure.lang.PersistentList              |
+   | (1 2 3) | true  | clojure.lang.Cons                        |
+   | [1 2 3] | false | clojure.lang.PersistentVector            |
+   | (1 2 3) | true  | clojure.lang.PersistentVector$ChunkedSeq |
+
+   - a seq can be lazy. getting length can be costly
+
+   #+begin_src clojure
+     (let [s (range 1e6)]
+       (time (count s)))
+     (let [s (apply list(range 1e6))]
+       (time (count s)))
+   #+end_src
+
+   #+RESULTS:
+   | 1000000 |
+   | 1000000 |
+
+   - functions in the core library are separated into
+     - either collection fns
+       (which take a coll as the first arg and return a coll of the same type)
+       =conj=, =assoc=, =count=, =get=
+     - or sequence fns (which take a "seqable" thing as the last argument,
+       convert it to a sequence, perform their function, and return a sequence)
+       =map=, =filter=, =reduce=
+       
+       
    
 ** [#A] Programming to Abstractions (first, rest, and cons)
 *** cons
