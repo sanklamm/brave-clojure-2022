@@ -7,3 +7,7 @@
 
   The =/src= folder is split up by chapter, containing some example code as well
   as solutions to the exercises.
+
+* Tests
+  Added [[https://cljdoc.org/d/lambdaisland/kaocha/1.63.998/doc/1-introduction][koacha testing tool]].
+  Make sure =./bin/kaocha= is executable. Run with either =bin/koacha= or =bin/koacha --watch=.
