@@ -1,1 +1,10 @@
-{:paths ["src" "resources"]}
+{:paths ["src" "resources"]
+ :deps { ,,,}
+ :aliases
+ {
+  :test
+  {
+   :extra-paths ["test", "config/test"]
+   :extra-deps {lambdaisland/kaocha {:mvn/version "1.63.998"}}}
+  ,}}
+           
