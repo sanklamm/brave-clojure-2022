@@ -7,4 +7,3 @@
    :extra-paths ["test", "config/test"]
    :extra-deps {lambdaisland/kaocha {:mvn/version "1.63.998"}}}
   ,}}
-           

@@ -1,5 +1,63 @@
 (ns chap05)
 
+
+;;;;;;;;;;
+;; comp ;;
+;;;;;;;;;;
+
+(defn countif
+  [f coll]
+  (count (filter f coll)))
+
+(def countif-comp (comp count filter))
+
+(countif even? [1 2 3 4 5 6])
+;; => 3
+
+
+;;;;;;;;;;;;;
+;; memoize ;;
+;;;;;;;;;;;;;
+
+(defn rando
+  [n]
+  (rand n))
+
+(def rando-memo (memoize rando))
+
+(rando 10)
+(rando-memo 10)
+
+(defn fib
+  "Computes the n-th Fibonacci number."
+  [n]
+  (if (> n 1)
+    (+ (fib (dec n)) (fib (- n 2)))
+    n))
+
+(def fib-memo
+  (memoize
+   (fn [n]
+     (if (> n 1)
+       (+' (fib-memo (dec n)) (fib-memo (- n 2)))
+       n))))
+
+(defn fib-recur
+  [n]
+  (loop [curr 0
+         next 1
+         n n]
+    (if-not (zero? n)
+      (recur next (+' curr next) (dec n))
+      curr)))
+
+(time (fib 42)) ;; takes 3800 msecs
+;; => 267914296
+(time (fib-memo 42)) ;; takes 0.05 msec
+;; => 267914296
+(time (fib-recur 42)) ;; takes 0.2 msec
+;; => 267914296
+
 ;;;;;;;;;;
 ;; ex01 ;;
 ;;;;;;;;;;
@@ -26,7 +84,10 @@
    (fn [& args]
      (f (apply g args))))
   ([f g & fs]
-   (reduce my-comp (cons f(cons g(seq fs)))))) ; could be simplified with list*
+   (reduce my-comp (cons f (cons g (seq fs)))))) ; could be simplified with list*
+
+(cons 1 (cons 2 (seq '(4 5 6))))
+(list* 1 2 '(4 5 6))
 
 ((comp) 1)
 ;; => 1
