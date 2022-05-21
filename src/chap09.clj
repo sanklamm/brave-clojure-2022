@@ -12,7 +12,7 @@
 
 (defn make-query-string
   [s]
-  (str "/search?q%3D" (str/replace s #" " "+")))
+  (str "/search?q=" (str/replace s #" " "+")))
 
 (make-query-string query)
 ;; => "/search?q%3DClojure+for+the+Brave+and+True"
